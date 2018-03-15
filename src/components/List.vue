@@ -5,7 +5,7 @@
     </div>
     <ul class="shoping-list">
       <li
-        v-for="item in todos"
+        v-for="item in items"
         :key="item.id"
         :item="item"
         is="item"
@@ -26,7 +26,7 @@
     components: {
       Item,
     },
-    props: ['todos'],
+    props: ['items'],
     data() {
       return {
 
@@ -48,11 +48,10 @@
     padding: 10px;
     list-style-type: none;
     border-bottom: 1px solid #d3d3d3;
-    color: #999;
     line-height: 1;
   }
   .add-item {
-    padding-left: 17px;
+    padding-left: 21px;
     cursor: pointer;
   }
   .add-item:hover {

@@ -47,9 +47,7 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'indent': 'off',
-    'vue/script-indent': ['warn', 2, {
-      'baseIndent': 1
-    }]
-
+    'vue/script-indent': [0],
+    'consistent-return': 'off',
   }
 }

@@ -4,7 +4,7 @@
       <p class="title-text">ShoppingList</p>
     </header>
     <div class="container">
-      <list :todos="todos"></list>
+      <list :items="items"></list>
       <detail></detail>
     </div>
   </div>
@@ -17,6 +17,7 @@
   import data from './data.json';
   import List from './components/List';
   import Detail from './components/Detail';
+  import eventBus from './eventBus';
 
   export default {
     name: 'App',
@@ -26,8 +27,26 @@
     },
     data() {
       return {
-        todos: data,
+        items: data,
       };
+    },
+    methods: {
+      getItemIndex(changedItem) {
+        for (let i = 0; i < this.items.length; i += 1) {
+          const item = this.items[i];
+
+          if (item.id === changedItem.id) {
+            return i;
+          }
+        }
+      },
+    },
+    mounted() {
+      eventBus.$on('CHANGE_ITEM', (newItem) => {
+        const itemIndex = this.items.findIndex(el => (el.id === newItem.id));
+
+        this.items.splice(itemIndex, 1, { ...newItem });
+      });
     },
   };
 </script>
