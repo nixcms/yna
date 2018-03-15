@@ -1,0 +1,18 @@
+[
+  {
+    "id": 0,
+    "title": "Milk",
+    "description": "Test description",
+    "done": false,
+    "quantity": 4,
+    "price": 24
+  },
+  {
+    "id": 1,
+    "title": "Bread",
+    "description": "Test description",
+    "done": true,
+    "quantity": 1,
+    "price": 10
+  }
+]

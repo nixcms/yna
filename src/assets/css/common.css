@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+body {
+  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif;
+  color: #000;
+}
+.title {
+  background: linear-gradient(to right, rgba(0,229,145,1) 0%,rgba(47,239,188,1) 100%);
+}
+.title-text {
+  font-size: 22px;
+  color: #fff;
+}
+@media screen and (max-width: 800px) {
+  .title-text {
+    font-size: 18px;
+  }
+}
