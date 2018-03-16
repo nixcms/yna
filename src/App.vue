@@ -43,18 +43,6 @@
       };
     },
 
-    methods: {
-      getItemIndex(changedItem) {
-        for (let i = 0; i < this.items.length; i += 1) {
-          const item = this.items[i];
-
-          if (item.id === changedItem.id) {
-            return i;
-          }
-        }
-      },
-    },
-
     mounted() {
       eventBus.$on('CHANGE_ITEM', (newItem) => {
         const itemIndex = this.items.findIndex(el => (el.id === newItem.id));
