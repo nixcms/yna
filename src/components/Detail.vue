@@ -1,32 +1,72 @@
 <template>
   <div class="detail">
     <div class="title">
-      <p class="title-text">{{productName}} detail</p>
+      <p class="title-text">{{item.title}} detail</p>
     </div>
     <form class="form">
       <div class="form-row">
         <label for="">Quantity</label>
-        <input type="text">
+        <input
+          type="number"
+          v-model="changedItem.quantity"
+          @blur="changeItem()"
+        >
       </div>
       <div class="form-row">
         <label for="">Price</label>
-        <input type="text">
+        <input
+          type="number"
+          v-model="changedItem.price"
+          @blur="changeItem()"
+        >
       </div>
       <div class="form-row">
         <label for="">Description</label>
-        <textarea ></textarea>
+        <textarea
+          v-model="changedItem.description"
+          @blur="changeItem()"
+        >
+        </textarea>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+  import eventBus from '../eventBus';
+
   export default {
     name: 'Detail',
+    props: ['item'],
+
     data() {
       return {
-        productName: 'Bread',
+        changedItem: Object.assign({}, this.item),
       };
+    },
+
+    watch: {
+      item(value) {
+        this.changedItem = Object.assign({}, value);
+      },
+    },
+
+    methods: {
+      changeItem() {
+        eventBus.$emit('CHANGE_ITEM', this.changedItem);
+      },
+    },
+
+    filters: {
+      onlyNumbers(value) {
+        let newValue = value;
+
+        if (newValue.match(/[^0-9]/g)) {
+            newValue = newValue.replace(/[^0-9]/g, '');
+        }
+
+        return newValue;
+      },
     },
   };
 </script>
@@ -52,7 +92,7 @@
     margin-bottom: 2px;
     color: #333;
   }
-  input[type="text"],
+  input,
   textarea {
     display: block;
     width: 100%;
@@ -61,7 +101,7 @@
     font-size: 14px;
     color: #999;
   }
-  input[type="text"]:focus,
+  input:focus,
   textarea:focus {
     color: #000;
     border-color: #000;

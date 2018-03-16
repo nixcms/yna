@@ -8,29 +8,43 @@
         v-for="item in items"
         :key="item.id"
         :item="item"
+        :currentItemId="currentItemId"
         is="item"
       >
       </li>
       <li>
-        <a class="add-item">Add item</a>
+        <a
+          class="add-item"
+          @click="addNewItem()"
+        >
+          Add item
+        </a>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import eventBus from '../eventBus';
   import Item from './Item';
 
   export default {
     name: 'List',
+    props: ['currentItemId', 'items'],
     components: {
       Item,
     },
-    props: ['items'],
+
     data() {
       return {
 
       };
+    },
+
+    methods: {
+      addNewItem() {
+        eventBus.$emit('ADD_NEW_ITEM');
+      },
     },
   };
 </script>

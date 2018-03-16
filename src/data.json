@@ -10,7 +10,7 @@
   {
     "id": 1,
     "title": "Bread",
-    "description": "Test description",
+    "description": "Another test description",
     "done": true,
     "quantity": 1,
     "price": 10
